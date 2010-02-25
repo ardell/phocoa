@@ -1012,7 +1012,7 @@ class WFDieselSearchHelper extends WFObject
             // convert this into a multi-d array of <attrID> with <ops> with <opQueries>
             foreach ($this->attributeQueries as $qInfo) {
                 $matches = array();
-                if (preg_match('/^([A-Z]{2})_([^=]*)=(.*)$/', $qInfo, $matches) and count($matches) == 4)
+                if (preg_match('/^([A-Z]{2})_([^=]*)=(.+)$/', $qInfo, $matches) and count($matches) == 4)
                 {
                     $op = $matches[1];
                     $attr = $matches[2];
@@ -1180,7 +1180,7 @@ class WFDieselSearchHelper extends WFObject
         $state = array();
         foreach ($this->attributeQueries as $q) {
             $matches = array();
-            if (preg_match('/^([A-Z]{2})_([^=]*)=(.*)$/', $q, $matches) and count($matches) == 4)
+            if (preg_match('/^([A-Z]{2})_([^=]*)=(.+)$/', $q, $matches) and count($matches) == 4)
             {
                 $attr = $matches[2];
                 if ($attr == $attribute)
@@ -1242,7 +1242,7 @@ class WFDieselSearchHelper extends WFObject
     {
         foreach ($this->attributeQueries as $q) {
             $matches = array();
-            if (preg_match('/^[A-Z]{2}_([^=]*)=.*$/', $q, $matches) and count($matches) == 2)
+            if (preg_match('/^[A-Z]{2}_([^=]*)=.+$/', $q, $matches) and count($matches) == 2)
             {
                 $attr = $matches[1];
                 if ($attr == $attribute)
