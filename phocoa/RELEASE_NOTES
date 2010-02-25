@@ -15,6 +15,7 @@ Version 0.3.7 - ??
 - [bugfix] WFCheckbox didn't invalidate its internal state when the checked/unchecked values were set, causing it to get out of sync with the restoreState() cycle.
 - [new] Added support for target attribute in WFForm.
 - [bugfix] Fix bug with WFAction when attaching events to non-input items.
+- [bugfix] WFDieselFacet popups with menus now have current attribute pre-selected.
 
 Version 0.3.6 - 3/18/2010
 - [bugfix] WFYAHOO_widget_TreeViewNode now works properly when there are special characters in the node IDs (/, space, etc). We were missing an encodeUriComponent().

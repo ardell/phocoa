@@ -556,7 +556,7 @@ END;
         $selection = $this->dieselSearchHelper->getAttributeSelection($this->attributeID);
         foreach ($facets as $facet) {
             $attributeValue = java_values($facet->getAttributeValue());
-            if ($selection == $attributeValue)
+            if ($selection == $attributeValue or ($this->isPopup and $this->popupAttributeValueIsSelected($attributeValue)))
             {
                 $selected = 'selected';
             }
