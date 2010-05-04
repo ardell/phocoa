@@ -509,7 +509,7 @@ class WFDieselFacet extends WFWidget implements WFDieselSearchHelperStateTrackin
     
     function removeFacetLink($linkText = "Remove")
     {
-        return "<a onClick=\"facetHandleClick(event);\" href=\"" . $this->parent()->baseURL() . '/' . urlencode($this->dieselSearchHelper->getQueryState($this->attributeID())) . "\">{$linkText}</a>";
+        return "<a onClick=\"facetHandleClick(this.href); return false\" href=\"" . $this->parent()->baseURL() . '/' . urlencode($this->dieselSearchHelper->getQueryState($this->attributeID())) . "\">{$linkText}</a>";
     }
 
     function editFacetLink($linkText = "Edit", $class = NULL)
@@ -552,8 +552,7 @@ class WFDieselFacet extends WFWidget implements WFDieselSearchHelperStateTrackin
                 var initialSelectedValue = '{$selection}';
                 if (selectedValue !== initialSelectedValue)
                 {
-                    facetHandleClick();
-                    window.location.href = '{$baseLink}|EQ_{$this->attributeID}=' + selectedValue;
+                    facetHandleClick('{$baseLink}|EQ_{$this->attributeID}=' + selectedValue);
                 }
             }
             </script>
@@ -719,7 +718,7 @@ END;
         else
         {
             $link = $this->parent()->baseURL() . '/' . urlencode($this->dieselSearchHelper->getQueryState($this->attributeID, $newAttrQueries));
-            $html .= "<span {$classHTML}><a onClick=\"facetHandleClick(event);\" href=\"{$link}\"$fullLabelAsTooltip>{$label}</a>";
+            $html .= "<span {$classHTML}><a onClick=\"facetHandleClick(this.href); return false;\" href=\"{$link}\"$fullLabelAsTooltip>{$label}</a>";
             if ($this->showItemCounts)
             {
                 $html .= ' (' . $facet->getHits() . ')';
